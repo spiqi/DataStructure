@@ -1,0 +1,58 @@
+#pragma warning(disable:4996)
+#include <cstdio>
+typedef struct LNode{
+	int data;
+	struct LNode  * next;
+
+}LNode ;
+
+
+
+
+LNode * ReadList(int length) {
+	LNode * L;
+	L = new LNode;
+	L->next = NULL;
+	LNode * p = L->next;
+	for (int i = 1; i <= length;i++) {
+
+		p = new LNode;
+		scanf("%d", &p->data);
+		p = p->next;
+	}
+
+	return L;
+}
+int GetElem(LNode * L, int i) {
+	LNode * p;
+	p = L->next;
+	int j = 1;
+	while (p&& j < i) {
+		p = p->next;
+		++j;
+	}
+	//if (!p || j > 1)return -1; //i值不合法 i>n 或 i≤ 0
+	return p->data;
+
+}
+int ListInsert(
+
+int main() {
+	//InitList(List);
+	int length;// the length of the list t o read;
+	printf("Please input the length of the list\n");
+
+	scanf("%d", &length);
+	printf("input the content of the list\n");
+	
+
+	 
+		LNode * List= ReadList(length);
+
+	for (int i = 1;i <= length;i++) {
+		printf("%d", GetElem(List, i));
+
+	}
+
+	scanf("");
+}
