@@ -33,6 +33,4 @@ int main() {
 	printf("input the content of the list");
 	ReadList(length, List);
 
-
-
 }
