@@ -6,18 +6,25 @@ typedef struct {
 	int * top;
 	int stacksize;
 } SqStack;
-int InitStack(SqStack &S) {
+int InitStack(SqStack &S) { //顺序栈
 	S.base = new int[MAX];
 	if (!S.base) exit(OVERFLOW);// 存储分配失败
-		S.top = S.base;
-		S.stacksize = MAX;
-		return 0;
+	S.top = S.base;
+	S.stacksize = MAX;
+	return 0;
 }
 int Push(SqStack &S, int e) {
 	if (S.top - S.base == S.stacksize) return ERROR;// stack if full
 	*S.top++ = e;
 	return 0;
-	}
+}
 int Pop(SqStack & S, int & e) {
-
+	if (S.top == S.base) return ERROR;
+	e = *--S.top;
+	return 0;
+}
+int main() {
+	char a[MAX];
+	char ch;
+	
 }
