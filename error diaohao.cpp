@@ -3,8 +3,8 @@
 #define MAXSIZE 100
 #define OVERFLOW 0
 typedef  struct SqStack {
-	int* base;  //栈底指针
-	int* top;//栈顶指针
+	char* base;  //栈底指针
+	char* top;//栈顶指针
 	int stacksize;
 }SqStack;
 
@@ -18,7 +18,7 @@ char k;
 
 void InitStack() {
 	//构造一个空栈
-	S.base = new int[MAXSIZE];
+	S.base = new char[MAXSIZE];
 	//if (!S.base) exit(OVERFLOW);
 	S.top = S.base;
 	S.stacksize = MAXSIZE;
@@ -49,9 +49,7 @@ void Pop( char& a) {
 void GetTop( char &b) {
 	//返回栈顶元素，不修改栈顶指针
 	if (S.top != S.base) {//栈非空
-
 		b = *S.top;     //将栈顶元素赋值给b
-
 	}
 	else {
 		b ='E';
@@ -89,12 +87,7 @@ void Getchar() {
 			printf("匹配失败  2 Fail\n");
 
 		}
-
-
-
-
 	}
-
 
 
 int main() {
