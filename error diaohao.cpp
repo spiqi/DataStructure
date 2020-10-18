@@ -52,6 +52,12 @@ void GetTop( char &b) {
 	}
 
 }
+
+bool StackEmpty(){
+    if (S.top==S.base) return true;
+    else return false;
+}
+
 void Getchar() {
 	int i = 0;
 	char ch;
@@ -63,18 +69,13 @@ void Getchar() {
     for (int j=0;j<i;j++) printf("%c",m[j]);
     printf ("dddd\n");
 	for (int j = 0; j < i; j++) {
-		if (m[j] == '(') {
-			Push('(');
-		}
-		else {
-			
-			GetTop( k);
-			if (k != '(') {
-				printf("匹配失败   1 Fail\n");
-				return;
-			}
-			Pop( n[j]);
-		}}
+        
+case '(' : Push('(');
+break;
+case ')' : b=GetTop();
+if (!StackEmpty()&& (b=='(') ) Pop (k);
+
+    }
 		GetTop( k);
 		if (k == 'E') {
 			printf("匹配成功 Succ\n");
