@@ -6,7 +6,6 @@ typedef  struct SqStack {
 	int* base;  //栈底指针
 	int* top;//栈顶指针
 	int stacksize;
-
 }SqStack;
 
 
@@ -17,16 +16,16 @@ char k;
 
 
 
-void InitStack(SqStack& S) {
+void InitStack() {
 	//构造一个空栈
 	S.base = new int[MAXSIZE];
 	//if (!S.base) exit(OVERFLOW);
-	S.top = S.base = 0;
+	S.top = S.base;
 	S.stacksize = MAXSIZE;
 }
 
 //进栈
-void Push(SqStack& S, char a) {
+void Push( char a) {
 	//插入元素为 a 为新的栈顶元素
 
 	if (S.top - S.base == S.stacksize) { //栈满
@@ -37,7 +36,7 @@ void Push(SqStack& S, char a) {
 }
 
 //出栈
-void Pop(SqStack& S, char& a) {
+void Pop( char& a) {
 	//删除S的栈顶元素,用a返回其值
 	if (S.top == S.base) {
 		printf("ERROR2");
@@ -47,7 +46,7 @@ void Pop(SqStack& S, char& a) {
 }
 
 // 取栈顶元素
-void GetTop(SqStack S, char &b) {
+void GetTop( char &b) {
 	//返回栈顶元素，不修改栈顶指针
 	if (S.top != S.base) {//栈非空
 
@@ -69,20 +68,20 @@ void Getchar() {
 	}
 	for (int j = 0; j < i; j++) {
 		if (m[j] == '(') {
-			Push(S, m[j]);
+			Push( m[j]);
 
 		}
 		else {
 			
-			GetTop(S, k);
+			GetTop( k);
 			if (k != '(') {
 				printf("匹配失败");
 				return;
 			}
 			
-			Pop(S, n[j]);
+			Pop( n[j]);
 		}
-		GetTop(S, k);
+		GetTop( k);
 		if (k == 'E') {
 			printf("匹配成功");
 
@@ -100,8 +99,7 @@ void Getchar() {
 }
 
 int main() {
-	SqStack S;
-	InitStack(S);
+	InitStack();
 	printf("请输入需要判断的括号表达式");
 	Getchar();
 	printf("aaaaa");
