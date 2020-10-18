@@ -75,7 +75,7 @@ void Getchar() {
 			
 			GetTop( k);
 			if (k != '(') {
-				printf("匹配失败");
+				printf("匹配失败Fail\n");
 				return;
 			}
 			
@@ -83,17 +83,13 @@ void Getchar() {
 		}
 		GetTop( k);
 		if (k == 'E') {
-			printf("匹配成功");
+			printf("匹配成功Succ\n");
 
 		}
 		else {
-			printf("匹配失败");
+			printf("匹配失败Fail\n");
 
 		}
-
-
-
-
 	}
 
 }
@@ -102,7 +98,7 @@ int main() {
 	InitStack();
 	printf("请输入需要判断的括号表达式");
 	Getchar();
-	printf("aaaaa");
+	printf("\naaaaa");
 
 
 
