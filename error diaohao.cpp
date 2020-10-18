@@ -69,30 +69,33 @@ void Getchar() {
 	for (int j = 0; j < i; j++) {
 		if (m[j] == '(') {
 			Push( m[j]);
-
 		}
 		else {
 			
 			GetTop( k);
 			if (k != '(') {
-				printf("匹配失败Fail\n");
+				printf("匹配失败   1 Fail\n");
 				return;
 			}
 			
 			Pop( n[j]);
-		}
+		}}
 		GetTop( k);
 		if (k == 'E') {
-			printf("匹配成功Succ\n");
+			printf("匹配成功 Succ\n");
 
 		}
 		else {
-			printf("匹配失败Fail\n");
+			printf("匹配失败  2 Fail\n");
 
 		}
+
+
+
+
 	}
 
-}
+
 
 int main() {
 	InitStack();
