@@ -45,7 +45,7 @@ void Pop(char & a) {
 void GetTop( char &b) {
 	//返回栈顶元素，不修改栈顶指针
 	if (S.top != S.base) {//栈非空
-		b = *S.top-1;     //将栈顶元素赋值给b
+		b = *(S.top-1);     //将栈顶元素赋值给b
 	}
 	else {
 		b ='E';
@@ -69,12 +69,17 @@ void Getchar() {
     for (int j=0;j<i;j++) printf("%c",m[j]);
     printf ("dddd\n");
 	for (int j = 0; j < i; j++) {
-        
+        switch (m[j])
+        {
 case '(' : Push('(');
 break;
-case ')' : b=GetTop();
+case ')' : 
+char b;
+GetTop(b);
 if (!StackEmpty()&& (b=='(') ) Pop (k);
+break;
 
+        }
     }
 		GetTop( k);
 		if (k == 'E') {
@@ -85,10 +90,6 @@ if (!StackEmpty()&& (b=='(') ) Pop (k);
 			printf("匹配失败  2 Fail\n");
 
 		}
-
-
-
-
 	}
 
 
