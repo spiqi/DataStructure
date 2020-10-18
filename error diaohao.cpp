@@ -14,8 +14,6 @@ char m[MAXSIZE];
 SqStack S;
 char k;
 
-
-
 void InitStack() {
 	//构造一个空栈
 	S.base = new char[MAXSIZE];
@@ -25,18 +23,16 @@ void InitStack() {
 }
 
 //进栈
-void Push( char a) {
+void Push(char a) {
 	//插入元素为 a 为新的栈顶元素
 
 	if (S.top - S.base == S.stacksize) { //栈满
 		printf("ERROR1");
 	}
 	*S.top++ = a;
-
 }
-
 //出栈
-void Pop( char& a) {
+void Pop(char & a) {
 	//删除S的栈顶元素,用a返回其值
 	if (S.top == S.base) {
 		printf("ERROR2");
@@ -49,7 +45,7 @@ void Pop( char& a) {
 void GetTop( char &b) {
 	//返回栈顶元素，不修改栈顶指针
 	if (S.top != S.base) {//栈非空
-		b = *S.top;     //将栈顶元素赋值给b
+		b = *S.top-1;     //将栈顶元素赋值给b
 	}
 	else {
 		b ='E';
@@ -64,9 +60,11 @@ void Getchar() {
 		m[i++] = ch;
 		ch = getchar();
 	}
+    for (int j=0;j<i;j++) printf("%c",m[j]);
+    printf ("dddd\n");
 	for (int j = 0; j < i; j++) {
 		if (m[j] == '(') {
-			Push( m[j]);
+			Push('(');
 		}
 		else {
 			
@@ -75,7 +73,6 @@ void Getchar() {
 				printf("匹配失败   1 Fail\n");
 				return;
 			}
-			
 			Pop( n[j]);
 		}}
 		GetTop( k);
@@ -87,12 +84,16 @@ void Getchar() {
 			printf("匹配失败  2 Fail\n");
 
 		}
+
+
+
+
 	}
 
 
 int main() {
 	InitStack();
-	printf("请输入需要判断的括号表达式");
+	printf("请输入需要判断的括号表达式\n");
 	Getchar();
 	printf("\naaaaa");
 
