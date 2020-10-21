@@ -2,8 +2,8 @@
 typedef struct BitNode {
 	int data;
 	struct BitNode *lchild, *rchild;
-}BitNode, *tree;
-void CreateBiTree(tree &T) {
+}BitNode; //用BitNode* 代替BiTree
+void CreateBiTree(BitNode* &T) {
 	char ch;
 	std::cin >> ch;
 	if (ch == '#') T = NULL;
@@ -12,6 +12,9 @@ void CreateBiTree(tree &T) {
 		T->data = ch;
 		CreateBiTree(T->lchild);
 		CreateBiTree(T->rchild);//先序遍历 genzuoy
-
 	}
+}
+int main() {
+	BitNode * tree;
+	CreateBiTree(tree);
 }
