@@ -28,7 +28,7 @@ void PreOrderTraverse(BitNode* T) { //xian序遍历的递归算法
 		PreOrderTraverse(T->rchild);
 	}
 }
-void PostOrderTraverse(BitNode* T) { //后序遍历的递归算法
+void PostOrderTraverse(BitNode* T) { //xian序遍历的递归算法
 	if (T) {
 		
 		PostOrderTraverse(T->lchild);
@@ -36,15 +36,25 @@ void PostOrderTraverse(BitNode* T) { //后序遍历的递归算法
 		std::cout << T->data;
 	}
 }
+int Depth(BitNode * T) {
+	if (T == NULL) return 0; //空树深度归零
+	else {
+		int m = Depth(T->lchild);
+		int n = Depth(T->rchild);
+		if (m > n) return m + 1;
+		else return n + 1;
+	}
+}
 int main() {
 	BitNode * tree;
 	CreateBiTree(tree);
-	std::cout << std::endl << "PreOrder Is:" << std::endl<<std::endl;
+	std::cout << std::endl << std::endl << "PreOrder Is:" << std::endl;
 	PreOrderTraverse(tree);
-	std::cout <<std::endl<< "InOrder Is :" << std::endl << std::endl;
+	std::cout << std::endl <<std::endl<< "InOrder Is :" << std::endl;
 	InOrderTraverse(tree);
-	std::cout << std::endl << "PostOrder Is:" << std::endl << std::endl;
+	std::cout << std::endl << "PostOrder Is:" << std::endl ;
 	PostOrderTraverse(tree);
+	std::cout << std::endl << std::endl << "Depth Is:" << std::endl << std::endl;
 	return 0;
 
 }
