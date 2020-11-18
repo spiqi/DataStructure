@@ -15,11 +15,29 @@ int CreateUDN(AMGraph &G) {
 	for (int i = 0; i < G.vernum; ++i)
 		for (int j = 0; j < G.vernum; ++j)
 			G.arcs[i][j] = MaxInt;
-}
+	for (int k = 0; k < G.arcnum; ++k) {
+		int v1, v2, w,i,j;
+		std::cin >> v1 >> v2 >> w;
+		i = LocateVex(G, v1);
+		j = LocateVex(G, v2);
+		G.arcs[i][j] = w;
+		G.arcs[j][i] = G.arcs[i][j];
 
-
-int main() {
-	int a;
-	printf("e");
 	}
+	return 0;
+}
+int LocateVex(AMGraph G, VerTexType v)//查找元素v在一维数组 Vertex[] 中的下标，并返回下标 
+{
+	int i;
+
+	for (i = 0; i < G.vernum; i++)
+	{
+		if (v == G.vexs[i])
+		{
+			return i;
+		}
+	}
+
+	printf("No Such Vertex!\n");
+	return -1;
 }
