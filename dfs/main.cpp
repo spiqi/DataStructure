@@ -21,7 +21,7 @@ int CreateUDN(AMGraph &G) {
 		i = LocateVex(G, v1);
 		j = LocateVex(G, v2);
 		G.arcs[i][j] = w;
-		G.arcs[j][i] = G.arcs[i][j];
+		G.arcs[j][i] = G.arcs[i][j]; //图的两侧定点互相连接
 
 	}
 	return 0;
@@ -40,4 +40,29 @@ int LocateVex(AMGraph G, VerTexType v)//查找元素v在一维数组 Vertex[] �
 
 	printf("No Such Vertex!\n");
 	return -1;
+}
+bool visited[MVNum];
+/*void DFS(AMGraph G,int v){
+	cout << v;
+	visited[v] = true;
+	for (int w = FirstAdjVex(G, v); w >= 0; w = NextAdjVex(G, v, w))
+		//依次检查v的所有邻接点w,FirstAdjVex(G,v)表示v的第一个邻接点
+		//NextAdjVex 表示 v相对于w的下一个邻接点 w>=0标识存在临界点
+		if (!visited[w]) DFS(G, w);
+
+} */
+void DFS_AM(AMGraph G, int v) {
+
+	std::cout << v;
+	visited[v] = true;
+	for (int w = 0; w < G.vernum; w++) 
+		if ((G.arcs[v][w] != 0) and (!visited[w])) DFS_AM(G, w);
+		
+	
+}
+int main(int a) {
+	AMGraph graph;
+	CreateUDN(graph);
+	DFS_AM(graph,1);
+	return 0;
 }
