@@ -18,12 +18,31 @@ typedef struct {
 }AMGraph;// 图的邻接矩阵
 
 
-int InitQueue( & Q){  //队列初始化
-	Q.base = new int [MVNum];
-	if (!Q.base) exit (OVERFLOW);
+int InitQueue(SqQueue & Q){  //队列初始化
+	Q.base = new QElemType [MVNum];
+	//if (!Q.base) exit (OVERFLOW);
 	Q.front =Q.rear =0;
 	return 0;
 }
+int EnQueue(SqQueue &Q,QElemType e){
+	if ((Q.rear+1)%MVNum==Q.front)
+	 e=Q.base[Q.front];
+	 Q.front= (Q.front+1)&MVNum;
+	 return 0;
+
+}
+int DeQueue(SqQueue &Q,QElemType &e)
+{
+	if (Q.front==Q.rear) return 1;
+	e=Q.base[Q.front];
+	Q.front = (Q.front+1) % MVNum;
+	return 0;
+
+}
+bool QueueEmpty(SqQueue &Q){
+	return Q.front==Q.rear;
+}
+
 int LocateVex(AMGraph G, VerTexType v)//查找元素v在一维数组 Vertex[] 中的下标，并返回下标 
 {
 	int i;
@@ -81,7 +100,21 @@ void DFS_AM(AMGraph G, int v) {
 	
 }
 void BFS(AMGraph G,int v){
-	std::cout<< G.vexs[v];
+	std::cout<< G.vexs[v]<<" ";
+	visited[v]= true;
+	SqQueue Q;
+	InitQueue(Q);
+EnQueue(Q,v);
+while (!QueueEmpty(Q)){
+int u;
+DeQueue(Q,u);
+for(int w=u;w<G.vernum;w++){
+	if ((G.arcs[v][w])and (!visited[w])){
+		std::cout<<G.vexs[w]<<" ";
+		visited[w]=true;
+	}
+}
+}
 	
 }
 void test(AMGraph graph){
@@ -96,7 +129,20 @@ void test(AMGraph graph){
 int main() {
 	AMGraph graph;
 	CreateUDN(graph);
-
-	DFS_AM(graph,0);
+printf("choose the 1.dfs 2.bfs \n");
+char ch;
+std::cin>>ch;
+scanf("%c",&ch);
+switch (ch)
+{
+case '1':
+DFS_AM(graph,0);
+	break;
+case '2':BFS(graph,0);
+break;
+default://BFS(graph,0);
+	break;
+}
+	
 	return 0;
 }
